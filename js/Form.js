@@ -1,6 +1,15 @@
 class Form{
     constructor(){
 
+        this.input = createInput("Name");
+        this.button = createButton("Play");
+        this.greeting = createElement('h2');
+
+    }
+    hide(){
+        this.input.hide();
+        this.button.hide(); 
+        this.greeting.hide();
     }
 display(){
 
@@ -8,31 +17,33 @@ display(){
     title.html("Car Racing Game");
     title.position(520,0);
 
-    var input = createInput("Name");
-    input.position(540,200);
+    this.input.position(540,200);
 
-    var button = createButton("Play");
-    button.position(580,300);
+    this.button.position(580,300);
 
 
-    button.mousePressed(function(){
-
-        input.hide();
-        button.hide();
-
-        var name = input.value();
+    this.button.mousePressed(()=>{
+        this.input.hide();
+        this.button.hide();
+     
+        player.name = this.input.value();
         playerCount+=1;
+        player.index = playerCount;
 
+        player.update();
         player.updateCount(playerCount);
-        player.update(name);
 
-
-        var greeting = createElement('h2');
-        greeting.html("Welcome "+name);
-        greeting.position(530,200);
-
-    })
-
+        this.greeting.html("Hello " + player.name)
+        this.greeting.position(130, 100);
+      });
 
 }
 }
+/*players
+    player1
+        name: Ayush
+        distance: 0
+    player2
+        name: Rakhi
+        distance: 0
+        */
